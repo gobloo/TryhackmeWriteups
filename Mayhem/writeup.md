@@ -1,5 +1,7 @@
+---
 layout: default
 title: Mayhem CTF Write-Up
+---
 
 # 🕵️‍♂️ Mayhem CTF Forensics Tryhackme
 
