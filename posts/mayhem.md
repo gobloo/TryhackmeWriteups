@@ -86,7 +86,7 @@ Conducted research and found:
 
 - Studied how the decryption routine works.
 - Extracted **AES keys** from the traffic the first request after notepad.exe
-![alt text](magic_bytes-1.png)
+![alt text](https://raw.githubusercontent.com/gobloo/TryhackmeWriteups/refs/heads/main/Mayhem/magic_bytes-1.png)
 
     ```bash
     [+] Key: 946cf2f65ac2d2b868328a18dedcc296cc40fa28fab41a0c34dcc010984410ca
