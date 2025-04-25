@@ -1,3 +1,6 @@
+layout: default
+title: Mayhem CTF Write-Up
+
 # 🕵️‍♂️ Mayhem CTF Forensics Tryhackme
 
 Ever cracked open a PCAP and uncovered a full-on malware operation hiding in plain sight? That’s exactly what this challenge was all about. From suspicious PowerShell scripts to sneaky HTTP traffic and full Havoc C2 decryption, this forensic journey had it all. I’ll walk you through how I broke it down — from protocol analysis to automating the entire decryption process with a bit of Bash magic. Let’s dive into the chaos of Mayhem.
