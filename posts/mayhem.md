@@ -162,6 +162,7 @@ To automate and simplify the process:
 This enabled complete C2 traffic decryption.
     
 ![alt text](https://raw.githubusercontent.com/gobloo/TryhackmeWriteups/refs/heads/main/Mayhem/image-10.png)
+
 ![alt text](https://raw.githubusercontent.com/gobloo/TryhackmeWriteups/refs/heads/main/Mayhem/image-11.png)
 ---
 
